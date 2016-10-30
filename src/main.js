@@ -11,7 +11,15 @@ require('./style.css')
 let div = document.createElement('div');
 document.children[0].appendChild(div);
 
-let store = createStore(reducer, {across:["abcd"]})
+let words = [
+'least',
+'earth',
+'argue',
+'stuff',
+'theft'
+]
+
+let store = createStore(reducer, {across:words})
 function render(){
     ReactDOM.render(<Provider store={store}><Crossword /></Provider>, div);
 }

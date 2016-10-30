@@ -8,18 +8,18 @@ class Crossword extends React.Component{
   render(){
     console.log(this.props);
     let cells = [];
-    for(let x = 0; x<5; x++){
-      for(let y = 0; y<5; y++){
-        cells.push(<Cell x={x} y={y} click={this.props.click} />);
+    for(let y = 0; y<5; y++){
+      for(let x = 0; x<5; x++){
+        
+        cells.push(<Cell key={x+"-"+y} x={x} y={y} click={this.props.click} />);
       }
-      cells.push(<br/>)
+      cells.push(<br key={y} />)
     }
 
     return <div>
     I am a crossword
     <br />
     {cells}
-    <button onClick={()=>console.log("dsa")} />
     </div>;
   }
 
@@ -33,8 +33,8 @@ function mapStateToProps(state, props) {
 
 function mapDispatchToProps(dispatch, props) {
   return {
-    click: (id) => {
-      console.log("cliquez");
+    click: (x, y) => {
+      console.log("cliquez", x, y);
       dispatch({type:'CLICK_CELL'});
     }
   };

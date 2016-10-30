@@ -9,7 +9,11 @@ export default class Cell extends React.Component{
   //
   // }
   render(){
-    return <div className="cell" onClick={()=>console.log("asd")} >I am a cell</div>;
+    return <div className="cell" onClick={()=>this.props.click(this.props.x,this.props.y)} >
+      {this.props.x}, {this.props.y}
+      <div className="number">{this.props.number}</div>
+      <div className="letter">{this.props.letter}</div>
+    </div>;
   }
 
 }
