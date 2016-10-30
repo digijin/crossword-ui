@@ -21,7 +21,8 @@ let words = [
 
 let store = createStore(reducer, {across:words})
 function render(){
-    ReactDOM.render(<Provider store={store}><Crossword /></Provider>, div);
+  console.log("rend...er?", store, div);
+  ReactDOM.render(<Provider store={store}><Crossword /></Provider>, div);
 }
 store.subscribe(render);
 render();

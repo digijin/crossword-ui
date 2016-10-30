@@ -9,7 +9,9 @@ export default class Cell extends React.Component{
   //
   // }
   render(){
-    return <div className="cell" onClick={()=>this.props.click(this.props.x,this.props.y)} >
+    let classes = ['cell']
+    if(this.props.selected) classes.push('selected')
+    return <div className={classes} onClick={()=>this.props.click(this.props.x,this.props.y)} >
       {this.props.x}, {this.props.y}
       <div className="number">{this.props.number}</div>
       <div className="letter">{this.props.letter}</div>
