@@ -6,7 +6,6 @@ import Cell from './Cell'
 class Crossword extends React.Component{
 
   render(){
-    console.log('rendering');
     let cells = [];
     for(let y = 0; y<5; y++){
       for(let x = 0; x<5; x++){

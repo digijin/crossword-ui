@@ -6,6 +6,8 @@ import reducer from './reducer';
 
 import Crossword from './Crossword';
 
+import Imagine from 'imagine-engine'
+
 require('./style.css')
 
 let div = document.createElement('div');
@@ -19,10 +21,20 @@ let words = [
 'theft'
 ]
 
+//REACT REDUCKS
 let store = createStore(reducer, {across:words})
 function render(){
-  console.log("rend...er?", store, div);
   ReactDOM.render(<Provider store={store}><Crossword /></Provider>, div);
 }
 store.subscribe(render);
 render();
+
+//KB INPUT
+let engine = new Imagine();
+engine.input.addListener((ev, key) => {
+  if(ev === 'onKeyDown'){
+    console.log(ev, String.fromCharCode(key));
+    store.dispatch({type:'KEY_DOWN', key: String.fromCharCode(key)})
+  }
+})
+String.fromCharCode
