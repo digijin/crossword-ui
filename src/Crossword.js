@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import Cell from './Cell'
 import Grid from './Grid'
+import Clues from './Clues'
 
 class Crossword extends React.Component{
 
@@ -11,6 +11,7 @@ class Crossword extends React.Component{
     go
     <br />
     <Grid />
+    <Clues />
     </div>;
   }
 
