@@ -6,6 +6,8 @@ import reducer from './reducer';
 
 import Crossword from './Crossword';
 
+require('./style.css')
+
 let div = document.createElement('div');
 document.children[0].appendChild(div);
 

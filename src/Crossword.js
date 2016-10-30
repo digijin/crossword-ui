@@ -1,11 +1,26 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import Cell from './Cell'
+
 class Crossword extends React.Component{
 
   render(){
     console.log(this.props);
-    return <div>I am a crossword</div>;
+    let cells = [];
+    for(let x = 0; x<5; x++){
+      for(let y = 0; y<5; y++){
+        cells.push(<Cell x={x} y={y} click={this.props.click} />);
+      }
+      cells.push(<br/>)
+    }
+
+    return <div>
+    I am a crossword
+    <br />
+    {cells}
+    <button onClick={()=>console.log("dsa")} />
+    </div>;
   }
 
 }
@@ -19,7 +34,8 @@ function mapStateToProps(state, props) {
 function mapDispatchToProps(dispatch, props) {
   return {
     click: (id) => {
-      dispatch({type:'CHANGE_MODE'});
+      console.log("cliquez");
+      dispatch({type:'CLICK_CELL'});
     }
   };
 }
