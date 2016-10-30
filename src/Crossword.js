@@ -2,29 +2,15 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import Cell from './Cell'
+import Grid from './Grid'
 
 class Crossword extends React.Component{
 
   render(){
-    let cells = [];
-    for(let y = 0; y<5; y++){
-      for(let x = 0; x<5; x++){
-        let selected = this.props.selected;
-        if(selected&& x===selected.x&&y===selected.y){
-          selected = true;
-        }else{
-          selected = false;
-        }
-
-        cells.push(<Cell selected={selected} key={x+"-"+y} x={x} y={y} click={this.props.click} />);
-      }
-      cells.push(<br key={y} />)
-    }
-
     return <div>
-    gogogo
+    go
     <br />
-    {cells}
+    <Grid />
     </div>;
   }
 
