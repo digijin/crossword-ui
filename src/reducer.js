@@ -12,7 +12,7 @@ export default function reducer(state, action){
   let selected = state.selected;
   let entries = state.entries;
 
-  if(!entries){
+  if(!entries){//init
     entries = [];
     for(let i = 0; i<5; i++){
       entries.push(new Array(5));
@@ -25,8 +25,7 @@ export default function reducer(state, action){
     break;
     case 'KEY_DOWN':
       if(selected){
-        // if(!entries) entries = new Array(5);
-        // if(!entries[selected.x]) entries[selected.x] = new Array(5)
+        entries = entries.slice(0)
         entries[selected.x][selected.y] = action.key
       }
     break;
