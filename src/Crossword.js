@@ -8,8 +8,6 @@ class Crossword extends React.Component{
 
   render(){
     return <div>
-    go
-    <br />
     <Grid />
     <Clues />
     </div>;

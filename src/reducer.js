@@ -25,8 +25,14 @@ export default function reducer(state, action){
     break;
     case 'KEY_DOWN':
       if(selected){
-        entries = entries.slice(0)
+        entries = entries.slice(0);//duplicate
         entries[selected.x][selected.y] = action.key
+        //highlight next letter
+        selected.x++;
+        if(selected.x>=5){
+          selected.x = 0
+          selected.y++
+        }
       }
     break;
   }

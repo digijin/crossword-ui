@@ -37,4 +37,3 @@ engine.input.addListener((ev, key) => {
     store.dispatch({type:'KEY_DOWN', key: String.fromCharCode(key)})
   }
 })
-String.fromCharCode
