@@ -27,8 +27,10 @@ class Grid extends React.Component{
         }else{
           selected = false;
         }
+        let letter = ''
+        if(this.props.entries && this.props.entries[x] && this.props.entries[x][y]) letter = this.props.entries[x][y];
 
-        cells.push(<Cell selected={selected} key={x+"-"+y} x={x} y={y} click={this.props.click} />);
+        cells.push(<Cell letter={letter} selected={selected} key={x+"-"+y} x={x} y={y} click={this.props.click} />);
       }
       cells.push(<br key={y} />) //TODO: handle another way
     }
@@ -42,7 +44,8 @@ class Grid extends React.Component{
 function mapStateToProps(state, props) {
   return {
     // across: state.across,
-    selected: state.selected
+    selected: state.selected,
+    entries: state.entries
   };
 }
 
