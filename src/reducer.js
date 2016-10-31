@@ -18,10 +18,17 @@ export default function reducer(state, action){
       entries.push(new Array(5));
     }
   }
+  if(!selected){
+    selected = {across:true}
+  }
 
   switch(action.type){
     case 'CLICK_CELL':
-      selected = {x: action.x, y:action.y}
+      if(selected.x===action.x && selected.y === action.y){
+        //altready selected, rotate
+        selected.across = !selected.across
+      }
+      selected = {x: action.x, y:action.y, across:selected.across}
     break;
     case 'KEY_DOWN':
       if(selected){

@@ -22,15 +22,23 @@ class Grid extends React.Component{
     for(let y = 0; y<5; y++){ //TODO: softcode
       for(let x = 0; x<5; x++){
         let selected = this.props.selected;
+        let highlighted = false;
+        // console.log(selected.across, selected.x, x);
+        if(selected.across && selected.x === x){
+          highlighted = true;
+        }else if(!selected.across && selected.y === y){
+          highlighted = true;
+        }
         if(selected&& x===selected.x&&y===selected.y){
           selected = true;
         }else{
           selected = false;
         }
+
         let letter = ''
         if(this.props.entries && this.props.entries[x] && this.props.entries[x][y]) letter = this.props.entries[x][y];
 
-        cells.push(<Cell letter={letter} selected={selected} key={x+"-"+y} x={x} y={y} click={this.props.click} />);
+        cells.push(<Cell letter={letter} highlighted={highlighted} selected={selected} key={x+"-"+y} x={x} y={y} click={this.props.click} />);
       }
       cells.push(<br key={y} />) //TODO: handle another way
     }

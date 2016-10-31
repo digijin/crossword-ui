@@ -30,10 +30,21 @@ store.subscribe(render);
 render();
 
 //KB INPUT
+function isLetter(str){
+  return /^[a-zA-Z()]+$/.test(str);
+}
+
 let engine = new Imagine();
 engine.input.addListener((ev, key) => {
+  // console.log("asd");
   if(ev === 'onKeyDown'){
-    console.log(ev, String.fromCharCode(key));
-    store.dispatch({type:'KEY_DOWN', key: String.fromCharCode(key)})
+    key = String.fromCharCode(key) //convert
+    if(isLetter(key)){
+      console.log(ev, key);
+      store.dispatch({type:'KEY_DOWN', key: key})
+    }else{
+      console.log('not a valid letter', key);
+    }
+
   }
 })

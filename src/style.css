@@ -6,6 +6,9 @@
   overflow: hidden;
   margin-left: 4px;
 }
+.highlighted{
+  background-color: lightgrey;
+}
 .selected{
   background-color: yellow;
 }
