@@ -4,12 +4,27 @@ class Clues extends React.Component{
   render() {
     let clues = []
     for(let i = 0; i < this.props.clues.length; i++){
+
+      let classes = ['clue']
+      let selected = false;
+
+      if(this.props.across === this.props.selected.across
+        && this.props.selected.across
+        && this.props.selected.y === i) selected = true;
+
+      if(this.props.across === this.props.selected.across
+        && !this.props.selected.across
+        && this.props.selected.x === i) selected = true;
+
+      if(selected) classes.push('selected')
+
       let clue = this.props.clues[i];
-      clues.push(<div onClick={() => {this.props.click(i, this.props.across)}} key={"clue"+i} className="clue">{clue}</div>) //TODO:fix key to number
+      clues.push(<div
+        className={classes.join(' ')}
+        onClick={() => {this.props.click(i, this.props.across)}}
+        key={"clue"+i}>{clue}</div>) //TODO:fix key to number
     }
-    // this.props.clues.forEach((clue) => {
-    //   clues.push(<div key={clue} className="clue">{clue}</div>) //TODO:fix key to number
-    // })
+
     return <div className="cluelist">{clues}</div>;
   }
 }
@@ -25,7 +40,6 @@ function mapStateToProps(state, props) {
 function mapDispatchToProps(dispatch, props) {
   return {
     click: (num, across) => {
-      // console.log("I GOT A CLUE", num, across);
       dispatch({type:'CLICK_CLUE', num:num, across:across});
     }
   };
