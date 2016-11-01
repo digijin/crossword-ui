@@ -22,3 +22,8 @@
   font-size: 10px;
   position: absolute;
 }
+
+.clue{
+  border: 1px solid grey;
+  padding: 10px;
+}

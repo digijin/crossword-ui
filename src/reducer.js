@@ -35,11 +35,20 @@ export default function reducer(state, action){
         entries = entries.slice(0);//duplicate
         entries[selected.x][selected.y] = action.key
         //highlight next letter
-        selected.x++;
-        if(selected.x>=5){
-          selected.x = 0
-          selected.y++
+        if(selected.across){
+          selected.x++;
+          if(selected.x>=5){
+            selected.x = 0
+            selected.y++
+          }
+        }else{//TODO:copypasta
+          selected.y++;
+          if(selected.y>=5){
+            selected.y = 0
+            selected.x++
+          }
         }
+
       }
     break;
   }

@@ -3,9 +3,13 @@ import { connect } from 'react-redux';
 class Clues extends React.Component{
   render() {
     let clues = []
-    this.props.clues.forEach((clue) => {
-      clues.push(<div key={clue} className="clue">{clue}</div>) //TODO:fix key to number
-    })
+    for(let i = 0; i < this.props.clues.length; i++){
+      let clue = this.props.clues[i];
+      clues.push(<div onClick={() => {this.props.click(i, this.props.across)}} key={"clue"+i} className="clue">{clue}</div>) //TODO:fix key to number
+    }
+    // this.props.clues.forEach((clue) => {
+    //   clues.push(<div key={clue} className="clue">{clue}</div>) //TODO:fix key to number
+    // })
     return <div className="clues">{clues}</div>;
   }
 }
@@ -13,15 +17,16 @@ class Clues extends React.Component{
 
 function mapStateToProps(state, props) {
   return {
-    clues: state.across,
+    // clues: state.across,
     selected: state.selected
   };
 }
 
 function mapDispatchToProps(dispatch, props) {
   return {
-    click: (x, y) => {
-      dispatch({type:'CLICK_CLUE', x:x, y:y});
+    click: (num, across) => {
+      // console.log("I GOT A CLUE", num, across);
+      dispatch({type:'CLICK_CLUE', num:num, across:across});
     }
   };
 }

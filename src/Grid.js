@@ -24,9 +24,9 @@ class Grid extends React.Component{
         let selected = this.props.selected;
         let highlighted = false;
         // console.log(selected.across, selected.x, x);
-        if(selected.across && selected.x === x){
+        if(!selected.across && selected.x === x){
           highlighted = true;
-        }else if(!selected.across && selected.y === y){
+        }else if(selected.across && selected.y === y){
           highlighted = true;
         }
         if(selected&& x===selected.x&&y===selected.y){
