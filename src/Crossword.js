@@ -10,6 +10,7 @@ class Crossword extends React.Component{
     return <div>
     <Grid />
     <Clues across={true} clues={this.props.across} />
+    <Clues across={false} clues={this.props.across} />
     </div>;
   }
 

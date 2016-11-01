@@ -30,6 +30,16 @@ export default function reducer(state, action){
       }
       selected = {x: action.x, y:action.y, across:selected.across}
     break;
+    case 'CLICK_CLUE':
+      selected.across = action.across;
+      selected.x = 0;
+      selected.y = 0;
+      if(action.across){
+        selected.y = action.num;
+      }else{
+        selected.x = action.num;
+      }
+    break;
     case 'KEY_DOWN':
       if(selected){
         entries = entries.slice(0);//duplicate
