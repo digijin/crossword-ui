@@ -10,7 +10,7 @@ class Clues extends React.Component{
     // this.props.clues.forEach((clue) => {
     //   clues.push(<div key={clue} className="clue">{clue}</div>) //TODO:fix key to number
     // })
-    return <div className="clues">{clues}</div>;
+    return <div className="cluelist">{clues}</div>;
   }
 }
 
