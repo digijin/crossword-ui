@@ -19,7 +19,7 @@ export default function reducer(state, action){
     }
   }
   if(!selected){
-    selected = {across:true}
+    selected = {x:0, y:0, across:true}
   }
 
   switch(action.type){
@@ -32,12 +32,12 @@ export default function reducer(state, action){
     break;
     case 'CLICK_CLUE':
       selected.across = action.across;
-      selected.x = 0;
-      selected.y = 0;
       if(action.across){
+        selected.x = 0;
         selected.y = action.num;
       }else{
         selected.x = action.num;
+        selected.y = 0;
       }
     break;
     case 'KEY_DOWN':
