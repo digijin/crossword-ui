@@ -4,14 +4,20 @@ import { connect } from 'react-redux';
 class ClueBar extends React.Component{
 
   render(){
-    return <div className='cluebar' >{JSON.stringify(this.props.selected)}</div>
+    let clue;
+    if(this.props.selected.across){
+      clue = this.props.clues.across[this.props.selected.y];
+    }else{
+      clue = this.props.clues.down[this.props.selected.x];
+    }
+    return <div className='cluebar' >{clue}</div>
   }
 
 }
 
 function mapStateToProps(state, props) {
   return {
-    across: state.across,
+    clues: state.clues,
     selected: state.selected
   };
 }

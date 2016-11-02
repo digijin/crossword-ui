@@ -34,3 +34,9 @@
 .clue:hover{
   background-color: lightblue;
 }
+.cluebar{
+  background-color: lightblue;
+  padding: 10px;
+  display: inline-block;
+  margin: 10px;
+}

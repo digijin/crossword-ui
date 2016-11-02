@@ -11,6 +11,7 @@ export default function reducer(state, action){
   let across = state.across;
   let selected = state.selected;
   let entries = state.entries;
+  let clues = state.clues;
 
   if(!entries){//init
     entries = [];
@@ -64,8 +65,8 @@ export default function reducer(state, action){
   }
 
   state = {
-    across, selected, entries
+    across, selected, entries, clues
   }
-  console.log("reducing", action, "to", state);
+  // console.log("reducing", action, "to", state);
   return state;
 }

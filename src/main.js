@@ -21,8 +21,25 @@ let words = [
 'theft'
 ]
 
+let clues = {
+  across:[
+    'not the most',
+    'our planet',
+    'heated discussion',
+    'things',
+    'stolen'
+  ],
+  down:[
+    'also not the most',
+    'also our planet',
+    'also heated discussion',
+    'also things',
+    'also stolen'
+  ]
+}
+
 //REACT REDUCKS
-let store = createStore(reducer, {across:words})
+let store = createStore(reducer, {across:words, clues: clues})
 function render(){
   ReactDOM.render(<Provider store={store}><Crossword /></Provider>, div);
 }
@@ -40,7 +57,6 @@ engine.input.addListener((ev, key) => {
   if(ev === 'onKeyDown'){
     key = String.fromCharCode(key) //convert
     if(isLetter(key)){
-      console.log(ev, key);
       store.dispatch({type:'KEY_DOWN', key: key})
     }else{
       console.log('not a valid letter', key);

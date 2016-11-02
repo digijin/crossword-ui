@@ -13,9 +13,9 @@ class Crossword extends React.Component{
       <ClueBar />
       <div className="clues">
         <h4>Across:</h4>
-        <Clues across={true} clues={this.props.across} />
+        <Clues across={true} clues={this.props.clues.across} />
         <h4>Down:</h4>
-        <Clues across={false} clues={this.props.across} />
+        <Clues across={false} clues={this.props.clues.down} />
       </div>
     </div>;
   }
@@ -25,6 +25,7 @@ class Crossword extends React.Component{
 function mapStateToProps(state, props) {
   return {
     across: state.across,
+    clues: state.clues,
     selected: state.selected
   };
 }
