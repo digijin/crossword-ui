@@ -62,7 +62,31 @@ export default function reducer(state, action){
 
       }
     break;
+    case 'LEFT_PRESSED':
+      selected.x--;
+    break;
+    case 'UP_PRESSED':
+      selected.y--;
+    break;
+    case 'RIGHT_PRESSED':
+      selected.x++;
+    break;
+    case 'DOWN_PRESSED':
+      selected.y++;
+    break;
+    case 'TAB_PRESSED':
+      if(selected.across){
+        selected.y++
+      }else{
+        selected.x++
+      }
+    break;
   }
+
+  selected.x = Math.max(selected.x, 0)
+  selected.y = Math.max(selected.y, 0)
+  selected.x = Math.min(selected.x, 4)
+  selected.y = Math.min(selected.y, 4)
 
   state = {
     across, selected, entries, clues
