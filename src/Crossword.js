@@ -24,7 +24,6 @@ class Crossword extends React.Component{
 
 function mapStateToProps(state, props) {
   return {
-    across: state.across,
     clues: state.clues,
     selected: state.selected
   };

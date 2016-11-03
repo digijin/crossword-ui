@@ -8,7 +8,7 @@ export default function reducer(state, action){
   //   entries: state.entries
   // }
 
-  let across = state.across;
+  let solution = state.solution;
   let selected = state.selected;
   let entries = state.entries;
   let clues = state.clues;
@@ -59,7 +59,6 @@ export default function reducer(state, action){
             selected.x++
           }
         }
-
       }
     break;
     case 'LEFT_PRESSED':
@@ -89,7 +88,7 @@ export default function reducer(state, action){
   selected.y = Math.min(selected.y, 4)
 
   state = {
-    across, selected, entries, clues
+    solution, selected, entries, clues
   }
   // console.log("reducing", action, "to", state);
   return state;

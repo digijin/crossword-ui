@@ -39,7 +39,7 @@ let clues = {
 }
 
 //REACT REDUCKS
-let store = createStore(reducer, {across:words, clues: clues})
+let store = createStore(reducer, {solution:words, clues: clues})
 function render(){
   ReactDOM.render(<Provider store={store}><Crossword /></Provider>, div);
 }
