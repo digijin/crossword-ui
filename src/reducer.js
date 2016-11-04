@@ -24,6 +24,30 @@ export default function reducer(state, action){
   }
 
   switch(action.type){
+    case 'CLICK_REVEAL_ALL':
+      for(let x = 0; x < 5; x++){
+        for(let y = 0; y < 5; y++){
+          entries[x][y] = solution[x][y];
+        }
+      }
+    break;
+    case 'CLICK_REVEAL_WORD':
+      for(let x = 0; x < 5; x++){
+        for(let y = 0; y < 5; y++){
+
+          if(!selected.across && selected.x === x){
+            entries[x][y] = solution[x][y];
+          }else if(selected.across && selected.y === y){
+            entries[x][y] = solution[x][y];
+          }
+
+        }
+      }
+    break;
+
+    case 'CLICK_REVEAL_SQUARE':
+      entries[selected.x][selected.y] = solution[selected.x][selected.y];
+    break;
     case 'CLICK_CELL':
       if(selected.x===action.x && selected.y === action.y){
         //altready selected, rotate
@@ -90,6 +114,6 @@ export default function reducer(state, action){
   state = {
     solution, selected, entries, clues
   }
-  // console.log("reducing", action, "to", state);
+  console.log("reducing", action, "to", state);
   return state;
 }

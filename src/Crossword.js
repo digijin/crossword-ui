@@ -4,12 +4,14 @@ import { connect } from 'react-redux';
 import Grid from './Grid'
 import Clues from './Clues'
 import ClueBar from './ClueBar'
+import ToolBar from './ToolBar'
 
 class Crossword extends React.Component{
 
   render(){
     return <div>
       <Grid />
+      <ToolBar />
       <ClueBar />
       <div className="clues">
         <h4>Across:</h4>
