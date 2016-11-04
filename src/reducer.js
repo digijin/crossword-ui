@@ -2,11 +2,6 @@ import { combineReducers } from 'redux';
 export default function reducer(state, action){
   //NEED TO RETURN A NEW object
   // OR ELSE IT WONT RERENDER
-  // state = {
-  //   across: state.across,
-  //   selected: state.selected,
-  //   entries: state.entries
-  // }
 
   let solution = state.solution;
   let selected = state.selected;
@@ -27,7 +22,7 @@ export default function reducer(state, action){
     case 'CLICK_REVEAL_ALL':
       for(let x = 0; x < 5; x++){
         for(let y = 0; y < 5; y++){
-          entries[x][y] = solution[x][y];
+          entries[x][y] = {letter: solution[x][y]};
         }
       }
     break;
@@ -36,16 +31,16 @@ export default function reducer(state, action){
         for(let y = 0; y < 5; y++){
           //copypasta from Grid. Not cleanest but works.
           if(!selected.across && selected.x === x){
-            entries[x][y] = solution[x][y];
+            entries[x][y] = {letter: solution[x][y]};
           }else if(selected.across && selected.y === y){
-            entries[x][y] = solution[x][y];
+            entries[x][y] = {letter: solution[x][y]};
           }
         }
       }
     break;
 
     case 'CLICK_REVEAL_SQUARE':
-      entries[selected.x][selected.y] = solution[selected.x][selected.y];
+      entries[selected.x][selected.y] = {letter: solution[selected.x][selected.y]};
     break;
     case 'CLICK_CELL':
       if(selected.x===action.x && selected.y === action.y){
@@ -67,7 +62,7 @@ export default function reducer(state, action){
     case 'KEY_DOWN':
       if(selected){
         entries = entries.slice(0);//duplicate
-        entries[selected.x][selected.y] = action.key
+        entries[selected.x][selected.y] = {letter: action.key}
         //highlight next letter
         if(selected.across){
           selected.x++;

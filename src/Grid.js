@@ -15,8 +15,15 @@ class Grid extends React.Component{
 
         let selected = (x===this.props.selected.x&&y===this.props.selected.y)
 
-        let letter = this.props.entries[x][y] || ''
-        cells.push(<Cell letter={letter} highlighted={highlighted} selected={selected} key={x+"-"+y} x={x} y={y} click={this.props.click} />);
+        let entry = this.props.entries[x][y];
+        let letter =  entry?entry.letter:''
+        cells.push(<Cell
+          letter={letter}
+          highlighted={highlighted}
+          selected={selected}
+          key={x+"-"+y}
+          x={x} y={y}
+          click={this.props.click} />);
       }
       cells.push(<br key={y} />) //TODO: handle another way
     }

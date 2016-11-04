@@ -61,7 +61,7 @@ document.addEventListener('keydown', (e) => {e.preventDefault();}, false)
 
 let engine = new Imagine();
 engine.input.addListener((ev, key) => {
-  // console.log("asd");
+
   if(ev === 'onKeyDown'){
     let letter = String.fromCharCode(key) //convert
     if(isLetter(letter)){
