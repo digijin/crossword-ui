@@ -34,13 +34,12 @@ export default function reducer(state, action){
     case 'CLICK_REVEAL_WORD':
       for(let x = 0; x < 5; x++){
         for(let y = 0; y < 5; y++){
-
+          //copypasta from Grid. Not cleanest but works.
           if(!selected.across && selected.x === x){
             entries[x][y] = solution[x][y];
           }else if(selected.across && selected.y === y){
             entries[x][y] = solution[x][y];
           }
-
         }
       }
     break;

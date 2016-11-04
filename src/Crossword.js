@@ -34,7 +34,6 @@ function mapStateToProps(state, props) {
 function mapDispatchToProps(dispatch, props) {
   return {
     click: (x, y) => {
-      // console.log("cliquez", x, y);
       dispatch({type:'CLICK_CELL', x:x, y:y});
     }
   };

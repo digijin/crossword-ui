@@ -22,7 +22,7 @@ class Clues extends React.Component{
       clues.push(<div
         className={classes.join(' ')}
         onClick={() => {this.props.click(i, this.props.across)}}
-        key={"clue"+i}>{clue}</div>) //TODO:fix key to number
+        key={"clue"+i}>{clue}</div>)
     }
 
     return <div className="cluelist">{clues}</div>;
