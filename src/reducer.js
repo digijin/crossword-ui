@@ -19,10 +19,54 @@ export default function reducer(state, action){
   }
 
   switch(action.type){
+    case 'CLICK_CHECK_ALL':
+      for(let x = 0; x < 5; x++){
+        for(let y = 0; y < 5; y++){
+          if(entries[x][y]){
+            // console.log(entries[x][y], solution[x][y], entries[x][y] === solution[x][y]);
+            if(entries[x][y].letter === solution[x][y]){
+              entries[x][y].confirmed = true;
+            }else{
+              entries[x][y].checked = true;
+            }
+          }
+        }
+      }
+    break;
+    case 'CLICK_CHECK_WORD':
+      for(let x = 0; x < 5; x++){
+        for(let y = 0; y < 5; y++){
+          //copypasta from Grid. Not cleanest but works.
+          if(entries[x][y]){
+            if(!selected.across && selected.x === x){
+              if(entries[x][y].letter === solution[x][y]){
+                entries[x][y].confirmed = true;
+              }else{
+                entries[x][y].checked = true;
+              }
+            }else if(selected.across && selected.y === y){
+              if(entries[x][y].letter === solution[x][y]){
+                entries[x][y].confirmed = true;
+              }else{
+                entries[x][y].checked = true;
+              }
+            }
+          }
+        }
+      }
+    break;
+    case 'CLICK_CHECK_SQUARE':
+      if(entries[selected.x][selected.y].letter === solution[selected.x][selected.y]){
+        entries[selected.x][selected.y].confirmed = true;
+      }else{
+        entries[selected.x][selected.y].checked = true;
+      }
+    break;
     case 'CLICK_REVEAL_ALL':
       for(let x = 0; x < 5; x++){
         for(let y = 0; y < 5; y++){
-          entries[x][y] = {letter: solution[x][y]};
+          if(!entries[x][y])
+            entries[x][y] = {letter: solution[x][y], revealed:true};
         }
       }
     break;
@@ -31,16 +75,16 @@ export default function reducer(state, action){
         for(let y = 0; y < 5; y++){
           //copypasta from Grid. Not cleanest but works.
           if(!selected.across && selected.x === x){
-            entries[x][y] = {letter: solution[x][y]};
+            entries[x][y] = {letter: solution[x][y], revealed:true};
           }else if(selected.across && selected.y === y){
-            entries[x][y] = {letter: solution[x][y]};
+            entries[x][y] = {letter: solution[x][y], revealed:true};
           }
         }
       }
     break;
 
     case 'CLICK_REVEAL_SQUARE':
-      entries[selected.x][selected.y] = {letter: solution[selected.x][selected.y]};
+      entries[selected.x][selected.y] = {letter: solution[selected.x][selected.y], revealed:true};
     break;
     case 'CLICK_CELL':
       if(selected.x===action.x && selected.y === action.y){

@@ -40,3 +40,9 @@
   display: inline-block;
   margin: 10px;
 }
+.checked{
+  border: 1px solid red;
+}
+.confirmed{
+  border: 1px solid green;
+}

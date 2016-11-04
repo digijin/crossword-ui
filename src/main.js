@@ -19,11 +19,11 @@ document.children[0].appendChild(div);
 // HEROS
 
 let words = [
-'least',
-'earth',
-'argue',
-'stuff',
-'theft'
+'LEAST',
+'EARTH',
+'ARGUE',
+'STUFF',
+'THEFT'
 ]
 
 let clues = {
