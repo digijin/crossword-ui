@@ -1,8 +1,5 @@
 import main from './main'
 
-let div = document.createElement('div');
-document.children[0].appendChild(div);
-
 let words = [
 'LEAST',
 'EARTH',
@@ -27,5 +24,7 @@ let clues = {
     'also stolen'
   ]
 }
-
-main(div, words, clues);
+window.onload = () => {
+  let div = document.getElementById('container');
+  main(div, words, clues);
+}
