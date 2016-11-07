@@ -1,27 +1,27 @@
 import main from './main'
 
 let words = [
-'LEAST',
-'EARTH',
-'ARGUE',
-'STUFF',
-'THEFT'
+'AGATE',
+'BARRA',
+'BUSES',
+'OZONE',
+'TENDS'
 ]
 
 let clues = {
   across:[
-    'not the most',
-    'our planet',
-    'heated discussion',
-    'things',
-    'stolen'
+    'How to get through a fence (1,4)',
+    'Slang for an australian type of fish',
+    'A form of public transport',
+    'A layer that surrounds the planet',
+    'A shepherd _____ his flock'
   ],
   down:[
-    'also not the most',
-    'also our planet',
-    'also heated discussion',
-    'also things',
-    'also stolen'
+    'Religious man, with a name like an ex-PM',
+    'Fabric used for wounds',
+    'Criminal fire',
+    'It\'s so hot right now',
+    'Gently pressure'
   ]
 }
 window.onload = () => {
