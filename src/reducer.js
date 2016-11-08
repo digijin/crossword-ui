@@ -7,6 +7,7 @@ export default function reducer(state, action){
   let selected = state.selected;
   let entries = state.entries;
   let clues = state.clues;
+  let alerts = state.alerts;
 
   if(!entries){//init
     entries = [];
@@ -16,6 +17,9 @@ export default function reducer(state, action){
   }
   if(!selected){
     selected = {x:0, y:0, across:true}
+  }
+  if(!alerts){
+    alerts = {done:false, fail:false}
   }
 
   switch(action.type){
@@ -149,8 +153,39 @@ export default function reducer(state, action){
   selected.x = Math.min(selected.x, 4)
   selected.y = Math.min(selected.y, 4)
 
+  //CHECK FOR WINNER;
+  //ALSO CHECK FOR COMPLETE BUT WITH ERRORS
+  let correct = 0;
+  let wrong = 0;
+  let empty = 0;
+  for(let x = 0; x<5; x++){
+    for(let y = 0; y<5; y++){
+      let entry = entries[x][y];
+      // console.log(entry?entry.letter:'', solution[x][y]);
+      if(!entry){
+        empty++;
+      }else if(entry.letter === solution[x][y]){
+        correct++;
+      }else{
+        wrong++;
+      }
+
+    }
+  }
+  // console.log(correct, wrong, empty);
+  if(empty === 0){
+    if(wrong > 0 && !alerts.fail){
+      alerts.fail = true;
+      alert('you have one wrong somewhere');
+    }else if(!alerts.done){
+      alerts.done = true;
+      alert('correct!!');
+    }
+  }
+
+
   state = {
-    solution, selected, entries, clues
+    solution, selected, entries, clues, alerts
   }
   console.log("reducing", action, "to", state);
   return state;
