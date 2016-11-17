@@ -1,13 +1,13 @@
 import main from './main'
 
 
-let words = [
-'AGATE',
-'BARRA',
-'BUSES',
-'OZONE',
-'TENDS'
-]
+// let words = [
+// 'AGATE',
+// 'BARRA',
+// 'BUSES',
+// 'OZONE',
+// 'TENDS'
+// ]
 //flip it cus its accessed thru [x][y] where x is horizontal not vertical
 let solution = [
   'ABBOT',
